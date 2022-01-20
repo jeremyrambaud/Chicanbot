@@ -1,0 +1,31 @@
+#docker container run -d --name traefik_global --network traefik_webgateway -p 80:80 -p 8080:8080 --restart always --volume /var/run/docker.sock:/var/run/docker.sock traefik --api --api.insecure --providers.docker --providers.docker.exposedbydefault=false
+
+version: "3"
+
+volumes:
+  mongodbdata:
+    driver: local
+
+services:
+  node:
+    container_name: "${PROJECT_NAME}_node"
+    image: node:$NODE_TAG
+    working_dir: /usr/src/app
+    restart: unless-stopped
+    user: 'node'
+    links:
+      - mongodb
+    volumes:
+      - .:/usr/src/app
+    command: tail -f /dev/null
+    ports:
+      - "9229:9229"
+
+  mongodb:
+    container_name: "${PROJECT_NAME}_mongodb"
+    image: mongo:$MONGODB_TAG
+    restart: unless-stopped
+    volumes:
+      - mongodbdata:/data/db
+    ports:
+      - "27017:27017"
