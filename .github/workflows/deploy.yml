@@ -13,6 +13,8 @@ jobs:
     runs-on: ubuntu-latest
     environment: production
     steps:
+      - uses: olegtarasov/get-tag@v2.1
+        id: tagName
       - name: Updating the remote docker container to the latest version
         uses: appleboy/ssh-action@master
         with:
@@ -20,4 +22,4 @@ jobs:
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.PORT }}
-          script: whoami
+          script: docker-compose -f "docker-compose.yml" dow && docker-compose pull jrambaud/gerardbot:$GIT_TAG_NAME && docker-compose -f "docker-compose.yml" --env-file ".env" up -d --build
