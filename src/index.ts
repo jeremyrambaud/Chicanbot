@@ -26,7 +26,10 @@ const client: Client = new Client({
   ]
 });
 
-Modules.Poll.setup(client);
+// Setup all command modules.
+Object.values(Modules).forEach((module) => {
+  module.setup(client);
+});
 
 client.on('ready', async ()  => {
   console.info(`Client ready`);
@@ -43,8 +46,8 @@ client.on('ready', async ()  => {
   });
 });
 
-client.on('rateLimit', (data)  => {
-  console.warn(`Rate limiting in effect`, data);
+client.on('guildCreate', (guild) => {
+  guild.systemChannel?.send(`GérardBot is in the place !\nLet's get ready to Rumble !`);
 });
 
 // Login

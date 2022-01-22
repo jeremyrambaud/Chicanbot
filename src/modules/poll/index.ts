@@ -1,8 +1,8 @@
-import { Client, Collection, Guild, GuildMember, MessageEmbed, MessageReaction, PartialMessageReaction, Role, User } from 'discord.js';
+import { Client, Collection, Guild, GuildMember, MessageEmbed, MessageReaction, Role, User } from 'discord.js';
 import { emojiIndicatorToLetter } from '../../utils/letterRegionalIndicator';
 
-import { onInteractionCreate } from './onInteractionCreate';
-import { onMessageReaction } from './onMessageReaction';
+import { onInteractionCreate } from './events/onInteractionCreate';
+import { onMessageReaction } from './events/onMessageReaction';
 
 export const setup = (client: Client) => {
   client.on('interactionCreate', onInteractionCreate(client));
@@ -99,4 +99,4 @@ export const generateEmbed = async (
   return messageEmbed;
 }
 
-export { default as command } from './command';
+export * from './command';
