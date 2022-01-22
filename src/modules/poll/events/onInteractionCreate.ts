@@ -27,7 +27,12 @@ export const onInteractionCreate = (client: Client) => async (interaction: Inter
 
   const messageEmbed = await generateEmbed(interaction.guild, question, options, targetObject);
 
-  const message = await interaction.reply({ content: target?.toString(), embeds: [messageEmbed], fetchReply: true });
+  const message = await interaction.reply({
+    allowedMentions: { parse: ['roles', 'users', 'everyone'] },
+    content: target?.toString(),
+    embeds: [messageEmbed],
+    fetchReply: true
+  });
   if (!(message instanceof Message)) return;
 
   const poll = new Poll({
