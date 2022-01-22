@@ -40,14 +40,13 @@ client.on('ready', async ()  => {
     activities: [{
       type: 'WATCHING',
       name: `/gege`,
-      url: 'https://github.com/Olian04/discord-sometimes-helpful-bot',
     }],
     status: 'online',
   });
 });
 
 client.on('guildCreate', (guild) => {
-  guild.systemChannel?.send(`GérardBot is in the place !\nLet's get ready to Rumble !`);
+  guild.systemChannel?.send(`🤖 GérardBot activated !\nUse \`/gege\` to get a list of all commands currently available.`);
 });
 
 // Login

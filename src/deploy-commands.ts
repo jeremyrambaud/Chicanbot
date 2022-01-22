@@ -17,11 +17,11 @@ if (!BOT_TOKEN) console.error('BOT_TOKEN is not defined');
 if (!APPLICATION_ID) console.error('APPLICATION_ID is not defined');
 if (!GUILD_ID) console.error('GUILD_ID is not defined');
 
-if(BOT_TOKEN && APPLICATION_ID && GUILD_ID) {
+if(BOT_TOKEN && APPLICATION_ID) {
   const rest = new REST({ version: '9' }).setToken(BOT_TOKEN);
-  const route = ENVIRONMENT === 'dev' ? Routes.applicationGuildCommands(APPLICATION_ID, GUILD_ID) : Routes.applicationCommands(APPLICATION_ID);
+  const route = ENVIRONMENT === 'dev' && GUILD_ID ? Routes.applicationGuildCommands(APPLICATION_ID, GUILD_ID) : Routes.applicationCommands(APPLICATION_ID);
   rest.put(route, { body: commands })
-    .then(() => console.log('Successfully registered application commands.'))
+    .then(() => console.log(`Successfully registered ${commands.length} application commands (env: ${ENVIRONMENT}).`))
     .catch(console.error);
 }
 

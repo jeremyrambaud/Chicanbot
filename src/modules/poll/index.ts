@@ -72,8 +72,6 @@ export const generateEmbed = async (
     });
 
     await Promise.all(reactionPromises);
-
-    console.log(listReactions);
   }
 
   const optionsLines: { [key: string]: string} = {};

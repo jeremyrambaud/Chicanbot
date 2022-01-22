@@ -5,6 +5,8 @@ import * as Modules from '../../index';
 export const onInteractionCreate = (client: Client) => async (interaction: Interaction) => {
   if (!interaction.isCommand() || !interaction.guild || interaction.commandName !== command.name) return;
 
+  const showEveryone = interaction.options.getBoolean('show_everyone');
+
   const helpMessages: string[] = [];
 
   Object.values(Modules)
@@ -15,5 +17,5 @@ export const onInteractionCreate = (client: Client) => async (interaction: Inter
 
   const helpMessage = `__**List of all commands available for GérardBot :**__\n\n${helpMessages.join('\n')}`;
 
-  interaction.reply({content: helpMessage, ephemeral: true})
+  interaction.reply({content: helpMessage, ephemeral: !showEveryone})
 };

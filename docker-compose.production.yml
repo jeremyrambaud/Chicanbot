@@ -1,0 +1,27 @@
+version: "3"
+
+volumes:
+  mongodbdata:
+    driver: local
+
+services:
+  gerardbot:
+    container_name: "${PROJECT_NAME}_gerardbot__prod"
+    image: jrambaud/gerardbot:latest
+    restart: unless-stopped
+    links:
+      - mongodb
+    volumes:
+      - .env:/home/node/app/.env
+    command: tail -f /dev/null
+    ports:
+      - "9229:9229"
+
+  mongodb:
+    container_name: "${PROJECT_NAME}_mongodb__prod"
+    image: mongo:$MONGODB_TAG
+    restart: unless-stopped
+    volumes:
+      - mongodbdata:/data/db
+    ports:
+      - "27017:27017"
