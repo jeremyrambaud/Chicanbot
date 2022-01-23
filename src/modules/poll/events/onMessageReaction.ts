@@ -11,7 +11,7 @@ export const onMessageReaction = (client: Client) => async (messageReaction: Mes
 
   const question = poll.get('question');
   const options = poll.get('options').map((item: any) => ({name: item.get('name'), value: item.get('value')}));
-  const targetInfos = poll.get('target').toObject();
+  const targetInfos = poll.get('target')?.toObject();
 
   let targetObject = null;
   switch(targetInfos?.type) {

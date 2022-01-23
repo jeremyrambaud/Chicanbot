@@ -59,8 +59,13 @@ export const generateEmbed = async (
       const letter = (reaction.emoji.name && emojiIndicatorToLetter(reaction.emoji.name)) || null;
       const reactionUsers = await reaction.users.fetch();
       const users = reactionUsers
-        .filter(reactionUser => !reactionUser.bot && targetedUsers.map((targetedUser) => targetedUser.id).includes(reactionUser.id))
-        .sort((a, b) => +a.username - +b.username);
+        .filter(reactionUser =>
+          !reactionUser.bot
+          && (
+            (targetedUsers.length > 0 && targetedUsers.map((targetedUser) => targetedUser.id).includes(reactionUser.id))
+            || (targetedUsers.length === 0)
+          )
+        ).sort((a, b) => +a.username - +b.username);
       const userCount = users.size;
 
       listReactions.push({
