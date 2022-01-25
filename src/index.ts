@@ -6,9 +6,9 @@ import * as Modules from './modules/index';
 
 dotenv.config();
 
-const { BOT_TOKEN, MONGODB_HOST, MONGODB_PORT, MONGODB_DB } = process.env;
+const { BOT_TOKEN, MONGODB_USER, MONGODB_PASSWORD, MONGODB_HOST, MONGODB_PORT, MONGODB_DB } = process.env;
 
-await mongoose.connect(`mongodb://${MONGODB_HOST}:${MONGODB_PORT}/${MONGODB_DB}`);
+await mongoose.connect(`mongodb://${MONGODB_USER}:${MONGODB_PASSWORD}@${MONGODB_HOST}:${MONGODB_PORT}/${MONGODB_DB}`);
 
 // The Client and Intents are destructured from discord.js, since it exports an object by default. Read up on destructuring here https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
 const client: Client = new Client({

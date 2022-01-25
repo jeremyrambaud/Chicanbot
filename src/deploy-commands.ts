@@ -15,7 +15,6 @@ Object.values(Modules).forEach((module) => {
 
 if (!BOT_TOKEN) console.error('BOT_TOKEN is not defined');
 if (!APPLICATION_ID) console.error('APPLICATION_ID is not defined');
-if (!GUILD_ID) console.error('GUILD_ID is not defined');
 
 if(BOT_TOKEN && APPLICATION_ID) {
   const rest = new REST({ version: '9' }).setToken(BOT_TOKEN);

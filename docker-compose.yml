@@ -22,8 +22,13 @@ services:
   mongodb:
     container_name: "${PROJECT_NAME}_mongodb"
     image: mongo:$MONGODB_TAG
+    # Use to set initial password
+    # environment:
+    #   - MONGO_INITDB_ROOT_USERNAME=
+    #   - MONGO_INITDB_ROOT_PASSWORD=
     restart: unless-stopped
     volumes:
       - mongodbdata:/data/db
+    command: 'mongod --auth'
     ports:
-      - "27017:27017"
+      - "127.0.0.1:27017:27017"
