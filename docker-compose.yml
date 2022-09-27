@@ -29,6 +29,6 @@ services:
     restart: unless-stopped
     volumes:
       - mongodbdata:/data/db
-    command: 'mongod --auth'
+    command: 'mongod --auth --port ${MONGODB_PORT}'
     ports:
-      - "127.0.0.1:27017:27017"
+      - "127.0.0.1:${MONGODB_PORT}:${MONGODB_PORT}"

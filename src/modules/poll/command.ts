@@ -10,18 +10,17 @@ command.addStringOption((option) => option
 	.setRequired(true)
 );
 
-for (let i = 0; i <= 20; i++) {
-  command.addStringOption((option) => option
-		.setName(`option_${(i+10).toString(36)}`)
-		.setDescription(`Choice ${(i+10).toString(36).toUpperCase()}`)
-		.setRequired(i <= 1)
-	);
-}
-
 command.addMentionableOption((option) => option
 	.setName('target')
 	.setDescription('Role/user targeted by the poll.')
 );
+
+for (let i = 0; i <= 20; i++) {
+  command.addStringOption((option) => option
+		.setName(`option_${(i+10).toString(36)}`)
+		.setDescription(`Choice ${(i+10).toString(36).toUpperCase()}`)
+	);
+}
 
 export const help =
 `Create a poll with up to 20 options.
