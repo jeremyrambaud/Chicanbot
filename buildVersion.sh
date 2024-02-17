@@ -73,7 +73,7 @@ function select_opt {
 
 function bumpVersion {
     printf "Building projet...\n"
-    docker run --rm -v "$PWD":/usr/src/app/ -w /usr/src/app node:lts yarn install && yarn run build
+    docker run --rm -v "$PWD":/usr/src/app/ -w /usr/src/app node:16 yarn install && yarn run build
     printf "Done.\n\n"
 
     if [ $# -eq 0 ]
@@ -82,7 +82,7 @@ function bumpVersion {
         printf "Keeping version: $version.\n\n"
     else
         printf "Bumping $1 version...\n"
-        docker run --rm -v "$PWD":/usr/src/app/ -w /usr/src/app node:lts npm version $1 --git-tag-version=false > /dev/null
+        docker run --rm -v "$PWD":/usr/src/app/ -w /usr/src/app node:16 npm version $1 --git-tag-version=false > /dev/null
         version=$(grep '"version"' package.json | cut -d '"' -f 4 | head -n 1)
         printf "Done, new version: $version.\n\n"
     fi

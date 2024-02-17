@@ -1,21 +1,13 @@
-FROM node:lts-alpine
-RUN apk add --no-cache --virtual \
-  .gyp \
-  python3 \
-  make \
-  g++
+FROM node:16
 
-RUN mkdir /home/node/app/ && chown -R node:node /home/node/app
+RUN mkdir -p /home/node/app && chown -R node:node /home/node/app
 
 WORKDIR /home/node/app
 
-COPY --chown=node:node package.json ./
-COPY --chown=node:node yarn.lock ./
+COPY --chown=node:node ./ ./
 
 USER node
 
 RUN yarn install
 
-COPY --chown=node:node dist/. .
-
-CMD ["yarn", "start:prod"]
+CMD ["yarn", "run", "start:prod"]

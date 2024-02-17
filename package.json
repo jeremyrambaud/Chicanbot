@@ -1,14 +1,14 @@
 {
   "name": "Chicanbot",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "main": "dist/index.js",
   "author": "Zarwag",
   "license": "MIT",
   "type": "module",
   "scripts": {
     "prestart:prod": "yarn run deploy-commands:prod",
-    "start:prod": "node --experimental-specifier-resolution=node index.js",
-    "deploy-commands:prod": "node --experimental-specifier-resolution=node deploy-commands.js",
+    "start:prod": "node --experimental-specifier-resolution=node dist/index.js",
+    "deploy-commands:prod": "node --experimental-specifier-resolution=node dist/deploy-commands.js",
     "start:dev": "tsc --build --watch & nodemon -w ./dist --inspect=0.0.0.0 --experimental-specifier-resolution=node ./dist/index.js",
     "deploy-commands": "yarn build && node --experimental-specifier-resolution=node ./dist/deploy-commands.js",
     "start": "yarn run start:dev",
