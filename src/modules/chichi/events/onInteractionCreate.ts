@@ -15,7 +15,7 @@ export const onInteractionCreate = (client: Client) => async (interaction: Inter
     helpMessages.push(`**/${module.command.name}** :\n${module.help}\n`)
   });
 
-  const helpMessage = `__**List of all commands available for GérardBot :**__\n\n${helpMessages.join('\n')}`;
+  const helpMessage = `__**List of all commands available for Chicanbot :**__\n\n${helpMessages.join('\n')}`;
 
   interaction.reply({content: helpMessage, ephemeral: !showEveryone})
 };

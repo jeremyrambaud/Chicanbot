@@ -5,9 +5,9 @@ volumes:
     driver: local
 
 services:
-  gerardbot:
-    container_name: "${PROJECT_NAME}_gerardbot__prod"
-    image: jrambaud/gerardbot:latest
+  chicanbot:
+    container_name: "${PROJECT_NAME}_chicanbot__prod"
+    image: jrambaud/chicanbot:latest
     restart: unless-stopped
     links:
       - mongodb

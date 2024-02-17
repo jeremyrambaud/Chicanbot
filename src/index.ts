@@ -39,14 +39,14 @@ client.on('ready', async ()  => {
     afk: false,
     activities: [{
       type: 'WATCHING',
-      name: `/gege`,
+      name: `/chichi`,
     }],
     status: 'online',
   });
 });
 
 client.on('guildCreate', (guild) => {
-  guild.systemChannel?.send(`🤖 GérardBot activated !\nUse \`/gege\` to get a list of all commands currently available.`);
+  guild.systemChannel?.send(`🤖 Chicanbot activated !\nUse \`/chichi\` to get a list of all commands currently available.`);
 });
 
 // Login

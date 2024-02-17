@@ -87,13 +87,13 @@ function bumpVersion {
         printf "Done, new version: $version.\n\n"
     fi
 
-    printf "Building docker-image jrambaud/gerardbot:$version...\n"
-    docker build --pull --rm -f "Dockerfile" -t jrambaud/gerardbot:$version -t jrambaud/gerardbot:latest "."
+    printf "Building docker-image jrambaud/chicanbot:$version...\n"
+    docker build --pull --rm -f "Dockerfile" -t jrambaud/chicanbot:$version -t jrambaud/chicanbot:latest "."
     printf "Done.\n\n"
 
     printf "Do you want to push the docker image ?\n"
     case `select_opt "Yes" "No"` in
-        0) docker push jrambaud/gerardbot --all-tags;;
+        0) docker push jrambaud/chicanbot --all-tags;;
         1) ;;
     esac
     printf "\nAll done !"

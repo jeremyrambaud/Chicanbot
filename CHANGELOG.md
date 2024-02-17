@@ -19,5 +19,5 @@ All notable changes to this project will be documented in this file.
 Initial release
 
 ### Added
-- Help command (`/gege`)
+- Help command (`/chichi`)
 - Poll command (`/poll`)
